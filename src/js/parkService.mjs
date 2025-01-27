@@ -1,3 +1,22 @@
+const baseUrl = "https://developer.nps.gov/api/v1/";
+const apiKey = import.meta.env.VITE_NPS_API_KEY;
+export async function getParkData() {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-Api-Key": apiKey
+    }
+  };
+  let data = {};
+  const response = await fetch(baseUrl + "parks" + "?parkCode=yell", options);
+  // check to make sure the reponse was ok.
+  if (response.ok) {
+    // convert to JSON
+    data = await response.json();
+  } else throw new Error("response not ok");
+  // return just the first row of the data object
+  return data.data[0];
+}
 const park = {
   id: "F58C6D24-8D10-4573-9826-65D42B8B83AD",
   url: "https://www.nps.gov/yell/index.htm",
@@ -200,7 +219,3 @@ export const parkInfoLinks = [
     description: "Learn about the visitor centers in the park."
   }
 ];
-
-export function getParkData() {
-  return park;
-}

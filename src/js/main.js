@@ -17,6 +17,16 @@ function setParkInfoLinks(data) {
   infoEl.insertAdjacentHTML("afterbegin", html.join(""));
 }
 
+async function init() {
+  const parkData = await getParkData();
+
+  setHeaderFooter(parkData);
+  setParkIntro(parkData);
+  setParkInfoLinks(parkInfoLinks);
+}
+
+init();
+
 setHeaderFooter(parkData);
 setParkIntro(parkData);
 setParkInfoLinks(parkInfoLinks);
