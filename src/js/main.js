@@ -19,14 +19,9 @@ function setParkInfoLinks(data) {
 
 async function init() {
   const parkData = await getParkData();
-
   setHeaderFooter(parkData);
   setParkIntro(parkData);
   setParkInfoLinks(parkInfoLinks);
 }
 
 init();
-
-setHeaderFooter(parkData);
-setParkIntro(parkData);
-setParkInfoLinks(parkInfoLinks);
